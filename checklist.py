@@ -35,7 +35,10 @@ def save_list():
         #Listbox.get() returns a tuple...
         list_tuple = my_listbox.get(0, END)
         for item in list_tuple:
-            f.write(item + '\n')
+            if item.endswith() == '\n':
+                f.write(item)
+            else:
+                f.write(item + '\n')
 
 def open_list():
     '''Open saved list upon start if it exists'''
@@ -45,6 +48,7 @@ def open_list():
                 my_listbox.insert(END, line)
     except:
         return
+    
 
 
 #Define layout
