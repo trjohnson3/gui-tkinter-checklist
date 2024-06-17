@@ -26,6 +26,10 @@ def remove_item():
     if my_listbox.curselection():
         my_listbox.delete(my_listbox.curselection())
 
+def remove_all_items():
+    '''Delete the selected item from a list box'''
+    my_listbox.delete(0, END)
+
 
 #Define layout
 #Create frames
@@ -56,7 +60,7 @@ my_scrollbar.grid(row=0, column=1, sticky='NS')
 remove_item_button = tkinter.Button(button_frame, text='Remove Item', borderwidth=2, font=my_font,
                             bg=button_color, command=remove_item)
 remove_all_button = tkinter.Button(button_frame, text='Clear List', borderwidth=2, font=my_font,
-                            bg=button_color)
+                            bg=button_color, command=remove_all_items)
 save_button = tkinter.Button(button_frame, text='Save List', borderwidth=2, font=my_font,
                             bg=button_color)
 quit_button = tkinter.Button(button_frame, text='Quit', borderwidth=2, font=my_font,
