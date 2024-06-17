@@ -17,8 +17,9 @@ root.config(bg=root_color)
 #Define funcitons
 def add_item():
     '''Add an individual to the list box'''
-    my_listbox.insert(END, list_entry.get())
-    list_entry.delete(0, END)
+    if list_entry.get():
+        my_listbox.insert(END, list_entry.get())
+        list_entry.delete(0, END)
 
 
 #Define layout
