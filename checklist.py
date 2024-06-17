@@ -29,6 +29,14 @@ def remove_all_items():
     '''Delete the selected (ANCHOR) item from a list box'''
     my_listbox.delete(0, END)
 
+def save_list():
+    '''Save list to .txt file'''
+    with open('checklist.txt', 'w') as f:
+        #Listbox.get() returns a tuple...
+        list_tuple = my_listbox.get(0, END)
+        for item in list_tuple:
+            f.write(item + '\n')
+
 
 #Define layout
 #Create frames
@@ -61,7 +69,7 @@ remove_item_button = tkinter.Button(button_frame, text='Remove Item', borderwidt
 remove_all_button = tkinter.Button(button_frame, text='Clear List', borderwidth=2, font=my_font,
                             bg=button_color, command=remove_all_items)
 save_button = tkinter.Button(button_frame, text='Save List', borderwidth=2, font=my_font,
-                            bg=button_color)
+                            bg=button_color, command=save_list)
 quit_button = tkinter.Button(button_frame, text='Quit', borderwidth=2, font=my_font,
                             bg=button_color, command=root.destroy)
 remove_item_button.grid(row=0, column=0, padx=5, pady=5, ipadx=5)
