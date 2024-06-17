@@ -17,8 +17,10 @@ root.config(bg=root_color)
 #Define funcitons
 def add_item():
     '''Add an individual to the list box'''
-    if list_entry.get():
-        my_listbox.insert(END, list_entry.get())
+    if list_entry.get().strip():
+        my_listbox.insert(END, list_entry.get().strip())
+        list_entry.delete(0, END)
+    elif not list_entry.get().strip():
         list_entry.delete(0, END)
 
 def remove_item():
@@ -35,7 +37,7 @@ def save_list():
         #Listbox.get() returns a tuple...
         list_tuple = my_listbox.get(0, END)
         for item in list_tuple:
-            if item.endswith() == '\n':
+            if item.endswith('\n'):
                 f.write(item)
             else:
                 f.write(item + '\n')
