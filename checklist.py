@@ -1,5 +1,5 @@
 import tkinter
-from tkinter import END
+from tkinter import END, ANCHOR
 
 #Define root window
 root = tkinter.Tk()
@@ -23,11 +23,10 @@ def add_item():
 
 def remove_item():
     '''Delete the selected item from a list box'''
-    if my_listbox.curselection():
-        my_listbox.delete(my_listbox.curselection())
+    my_listbox.delete(ANCHOR)
 
 def remove_all_items():
-    '''Delete the selected item from a list box'''
+    '''Delete the selected (ANCHOR) item from a list box'''
     my_listbox.delete(0, END)
 
 
