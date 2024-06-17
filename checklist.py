@@ -13,5 +13,43 @@ root_color = '#6c1cbc'
 button_color = '#e2cff4'
 root.config(bg=root_color)
 
+#Define funcitons
+
+#Define layout
+#Create frames
+input_frame = tkinter.Frame(root, bg=root_color)
+output_frame = tkinter.Frame(root, bg=root_color)
+button_frame = tkinter.Frame(root, bg=root_color)
+input_frame.pack()
+output_frame.pack()
+button_frame.pack()
+
+#Input frame layout
+list_entry = tkinter.Entry(input_frame, width=35, borderwidth=3, font=my_font)
+add_button = tkinter.Button(input_frame, text='Add Item', borderwidth=2, font=my_font,
+                            bg=button_color)
+list_entry.grid(row=0, column=0, padx=5, pady=5)
+add_button.grid(row=0, column=1, padx=5, pady=5)
+
+#Output frame
+my_listbox = tkinter.Listbox(output_frame, width=45, height=15, borderwidth=3, font=my_font)
+my_listbox.grid(row=0, column=0)
+
+#Button frame layout
+remove_item_button = tkinter.Button(button_frame, text='Remove Item', borderwidth=2, font=my_font,
+                            bg=button_color)
+remove_all_button = tkinter.Button(button_frame, text='Clear List', borderwidth=2, font=my_font,
+                            bg=button_color)
+save_button = tkinter.Button(button_frame, text='Save List', borderwidth=2, font=my_font,
+                            bg=button_color)
+quit_button = tkinter.Button(button_frame, text='Quit', borderwidth=2, font=my_font,
+                            bg=button_color, command=root.destroy)
+remove_item_button.grid(row=0, column=0, padx=5, pady=5, ipadx=5)
+remove_all_button.grid(row=0, column=1, padx=5, pady=5, ipadx=5)
+save_button.grid(row=0, column=2, padx=5, pady=5, ipadx=5)
+quit_button.grid(row=0, column=3, padx=5, pady=5, ipadx=5)
+
+
+
 #Run app
 root.mainloop()
