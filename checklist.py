@@ -1,4 +1,5 @@
 import tkinter
+from tkinter import END
 
 #Define root window
 root = tkinter.Tk()
@@ -14,6 +15,11 @@ button_color = '#e2cff4'
 root.config(bg=root_color)
 
 #Define funcitons
+def add_item():
+    '''Add an individual to the list box'''
+    my_listbox.insert(END, list_entry.get())
+    list_entry.delete(0, END)
+
 
 #Define layout
 #Create frames
@@ -27,13 +33,18 @@ button_frame.pack()
 #Input frame layout
 list_entry = tkinter.Entry(input_frame, width=35, borderwidth=3, font=my_font)
 add_button = tkinter.Button(input_frame, text='Add Item', borderwidth=2, font=my_font,
-                            bg=button_color)
+                            bg=button_color, command=add_item)
 list_entry.grid(row=0, column=0, padx=5, pady=5)
-add_button.grid(row=0, column=1, padx=5, pady=5)
+add_button.grid(row=0, column=1, padx=5, pady=5, ipadx=5)
 
 #Output frame
-my_listbox = tkinter.Listbox(output_frame, width=45, height=15, borderwidth=3, font=my_font)
+my_scrollbar = tkinter.Scrollbar(output_frame)
+my_listbox = tkinter.Listbox(output_frame, width=45, height=15, borderwidth=3, font=my_font,
+                             yscrollcommand=my_scrollbar.set)
+#Link scrollbar to listbox
+my_scrollbar.config(command=my_listbox.yview)
 my_listbox.grid(row=0, column=0)
+my_scrollbar.grid(row=0, column=1, sticky='NS')
 
 #Button frame layout
 remove_item_button = tkinter.Button(button_frame, text='Remove Item', borderwidth=2, font=my_font,
