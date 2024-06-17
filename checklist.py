@@ -37,6 +37,15 @@ def save_list():
         for item in list_tuple:
             f.write(item + '\n')
 
+def open_list():
+    '''Open saved list upon start if it exists'''
+    try:
+        with open('checklist.txt', 'r') as f:
+            for line in f:
+                my_listbox.insert(END, line)
+    except:
+        return
+
 
 #Define layout
 #Create frames
@@ -77,7 +86,8 @@ remove_all_button.grid(row=0, column=1, padx=5, pady=5, ipadx=5)
 save_button.grid(row=0, column=2, padx=5, pady=5, ipadx=5)
 quit_button.grid(row=0, column=3, padx=5, pady=5, ipadx=5)
 
-
+#Open previous list if available
+open_list()
 
 #Run app
 root.mainloop()
